@@ -22,7 +22,7 @@ source-repository head
     location: http://github.com/twanvl/multiset.git
 
 Library
-    build-depends:       base
+    build-depends:       base >= 2 && < 5
     exposed-modules:
         Debug.SimpleReflect
         Debug.SimpleReflect.Expr
