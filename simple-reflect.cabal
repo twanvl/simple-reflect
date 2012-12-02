@@ -1,12 +1,13 @@
 name:                simple-reflect
-version:             0.2
+version:             0.3
 homepage:            http://twan.home.fmf.nl/blog/haskell/simple-reflection-of-expressions.details
 license:             BSD3
 license-file:        LICENSE
 author:              Twan van Laarhoven
 maintainer:          twanvl@gmail.com
+bug-reports:         https://github.com/twanvl/multiset/issues
 category:            Debug
-cabal-version:       >= 1.2
+cabal-version:       >= 1.6
 build-type:          Simple
 synopsis:            Simple reflection of expressions containing variables
 description:
@@ -15,8 +16,14 @@ description:
     
     The primary aim of this package is teaching and understanding;
     there are no options for manipulating the reflected expressions beyond showing them.
-build-depends:       base
-exposed-modules:
-    Debug.SimpleReflect
-    Debug.SimpleReflect.Expr
-    Debug.SimpleReflect.Vars
+
+source-repository head
+    type:     git
+    location: http://github.com/twanvl/multiset.git
+
+Library
+    build-depends:       base
+    exposed-modules:
+        Debug.SimpleReflect
+        Debug.SimpleReflect.Expr
+        Debug.SimpleReflect.Vars

@@ -21,6 +21,7 @@ module Debug.SimpleReflect.Expr
     ) where
 
 import Data.List
+import Data.Monoid
 import Control.Applicative
 
 ------------------------------------------------------------------------------
@@ -206,3 +207,12 @@ instance Enum Expr where
 instance Bounded Expr where
     minBound = var "minBound"
     maxBound = var "maxBound"
+
+------------------------------------------------------------------------------
+-- Other classes
+------------------------------------------------------------------------------
+
+instance Monoid Expr where
+    mempty = var "mempty"
+    mappend = withReduce2 $ op InfixR 6 "<>"
+
