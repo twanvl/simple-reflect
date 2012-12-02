@@ -5,7 +5,7 @@ license:             BSD3
 license-file:        LICENSE
 author:              Twan van Laarhoven
 maintainer:          twanvl@gmail.com
-bug-reports:         https://github.com/twanvl/multiset/issues
+bug-reports:         https://github.com/twanvl/simple-reflect/issues
 category:            Debug
 cabal-version:       >= 1.6
 build-type:          Simple
@@ -19,7 +19,7 @@ description:
 
 source-repository head
     type:     git
-    location: http://github.com/twanvl/multiset.git
+    location: http://github.com/twanvl/simple-reflect.git
 
 Library
     build-depends:       base >= 2 && < 5
