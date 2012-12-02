@@ -1,5 +1,5 @@
 name:                simple-reflect
-version:             0.3
+version:             0.3.1
 homepage:            http://twan.home.fmf.nl/blog/haskell/simple-reflection-of-expressions.details
 license:             BSD3
 license-file:        LICENSE
