@@ -214,5 +214,5 @@ instance Bounded Expr where
 
 instance Monoid Expr where
     mempty = var "mempty"
-    mappend = withReduce2 $ op InfixR 6 "<>"
+    mappend = withReduce2 $ op InfixR 6 " <> "
 
