@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Debug.SimpleReflect
--- Copyright   :  (c) 2008 Twan van Laarhoven
+-- Copyright   :  (c) 2008-2014 Twan van Laarhoven
 -- License     :  BSD-style
 -- 
 -- Maintainer  :  twanvl@gmail.com
