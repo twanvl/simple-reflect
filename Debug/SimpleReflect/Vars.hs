@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Debug.SimpleReflect.Vars
--- Copyright   :  (c) 2008 Twan van Laarhoven
+-- Copyright   :  (c) 2008-2014 Twan van Laarhoven
 -- License     :  BSD-style
 -- 
 -- Maintainer  :  twanvl@gmail.com
@@ -20,6 +20,8 @@ module Debug.SimpleReflect.Vars
       a,b,c,d,e,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
       -- * Functions
     , f,f',f'',g,h
+      -- * Operators
+    , (⊗), (⊕), (@@)
     ) where
 
 import Debug.SimpleReflect.Expr
@@ -30,7 +32,7 @@ import Debug.SimpleReflect.Expr
 
 a,b,c,d,e,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z :: Expr
 [a,b,c,d,e,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]
-   = [var [x] | x <- ['a'..'e']++['i'..'z']]
+   = [var [letter] | letter <- ['a'..'e']++['i'..'z']]
 
 f,f',f'',g,h :: FromExpr a => a
 f   = fun "f"
@@ -38,3 +40,27 @@ f'  = fun "f'"
 f'' = fun "f''"
 g   = fun "g"
 h   = fun "h"
+
+------------------------------------------------------------------------------
+-- Operators
+------------------------------------------------------------------------------
+
+-- | A non-associative infix 9 operator
+(@@) :: Expr -> Expr -> Expr
+(@@) = op Infix 9 " @@ "
+
+infix 9 @@
+
+-- | A non-associative infix 7 operator
+(⊗) :: Expr -> Expr -> Expr
+(⊗) = op Infix 7 " ⊗ "
+
+infix 7 ⊗
+
+-- | A non-associative infix 6 operator
+(⊕) :: Expr -> Expr -> Expr
+(⊕) = op Infix 6 " ⊕ "
+
+infix 6 ⊕
+
+
