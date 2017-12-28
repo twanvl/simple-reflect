@@ -1,9 +1,10 @@
+{-# LANGUAGE CPP #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Debug.SimpleReflect.Expr
 -- Copyright   :  (c) 2008-2014 Twan van Laarhoven
 -- License     :  BSD-style
--- 
+--
 -- Maintainer  :  twanvl@gmail.com
 -- Stability   :  experimental
 -- Portability :  portable
@@ -22,6 +23,9 @@ module Debug.SimpleReflect.Expr
 
 import Data.List
 import Data.Monoid
+#if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,11,0))
+import Data.Semigroup
+#endif
 import Control.Applicative
 
 ------------------------------------------------------------------------------
@@ -58,7 +62,7 @@ var s = emptyExpr { showExpr = \_ -> showString s }
 lift :: Show a => a -> Expr
 lift x = emptyExpr { showExpr = \p -> showsPrec p x }
 
--- | This data type specifies the associativity of operators: left, right or none. 
+-- | This data type specifies the associativity of operators: left, right or none.
 data Associativity = InfixL | Infix | InfixR deriving Eq
 
 -- | An infix operator with the given associativity, precedence and name
@@ -124,7 +128,7 @@ expr :: Expr -> Expr
 expr = id
 
 -- | Reduce (evaluate) an expression once.
---   
+--
 --   For example @reduce (1 + 2 + 3 + 4)  ==  3 + 3 + 4@
 reduce :: Expr -> Expr
 reduce e = maybe e id (reduced e)
@@ -220,8 +224,15 @@ instance Bounded Expr where
 -- Other classes
 ------------------------------------------------------------------------------
 
+#if MIN_VERSION_base(4,9,0)
+instance Semigroup Expr where
+    (<>) = withReduce2 $ op InfixR 6 " <> "
+#endif
+
 instance Monoid Expr where
     mempty = var "mempty"
+#if !(MIN_VERSION_base(4,11,0))
     mappend = withReduce2 $ op InfixR 6 " <> "
+#endif
     mconcat = fun "mconcat"
 
