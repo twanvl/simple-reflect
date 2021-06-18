@@ -7,7 +7,7 @@ author:              Twan van Laarhoven
 maintainer:          twanvl@gmail.com
 bug-reports:         https://github.com/twanvl/simple-reflect/issues
 category:            Debug
-cabal-version:       >= 1.6
+cabal-version:       >= 1.8
 build-type:          Simple
 synopsis:            Simple reflection of expressions containing variables
 description:
